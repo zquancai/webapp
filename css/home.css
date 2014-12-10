@@ -5,6 +5,57 @@ body {
     overflow: hidden; /* 隐藏滚动条 */
 }
 
+header {
+    display: -webkit-box;
+    display: -moz-box;
+    width: 100%;
+    background: #ea413d;
+}
+
+.header-1,.header-2 {
+    display: inline-flex;
+    -webkit-box-flex: 1;
+    -moz-box-flex: 1;
+    height: 60px;
+    line-height: 60px;
+}
+
+.menu-left {
+    width: 25px;
+    height: 25px;
+    margin: 17px 10px 17px 25px;
+    background: url("../images/icon.png") no-repeat;
+    background-position: -70px -30px;
+    background-size: 350px 350px;
+}
+
+.menu-logo {
+    width: 50px;
+    height: 25px;
+    margin: 17px 10px 17px 15px;
+    background: url("../images/icon.png") no-repeat;
+    background-position: -70px -140px;
+    background-size: 350px 350px;
+}
+
+.user-img {
+    width: 40px;
+    height: 40px;
+    margin: 17px 10px 17px 15px;
+    background: url("../images/icon.png") no-repeat;
+    background-position: -70px -70px;
+    background-size: 350px 350px;
+}
+
+.menu-right {
+    width: 50px;
+    height: 25px;
+    margin: 17px 10px 17px 15px;
+    background: url("../images/icon.png") no-repeat;
+    background-position: -70px -140px;
+    background-size: 350px 350px;
+}
+
 .container {
     overflow: hidden;
 }
@@ -19,6 +70,10 @@ body {
     -webkit-transition:-webkit-transform 0s cubic-bezier(0,0,0.25,1); /* Safari and Chrome */
     -o-transition:-webkit-transform 0s cubic-bezier(0,0,0.25,1); /* Opera */
     text-align: center;
+}
+
+.scroll img {
+    width: 100%;
 }
 
 .scroll-other {
@@ -39,6 +94,7 @@ body {
 /*}*/
 
 .scroll section>div{
+    /*height: 380px;*/
     margin: 10px 10px;
     border: 2px solid black;
 }

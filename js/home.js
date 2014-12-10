@@ -25,13 +25,14 @@ var Scroll = function (ele) {
         startX = _getPageX(event);
     }
     function _touchmove(event) {
+        event.preventDefault(); // 阻止默认的触摸操作
         event.stopPropagation();
         curX = _getPageX(event);
         _setX(curX - startX - curpage * dwidth);
     }
     function _touchend(event) {
         var move = curX - startX;
-        if(Math.abs(move) >= 50) {
+        if(Math.abs(move) >= 100) {
             dir = move < 0 ? -1 : 1;
             if (dir == -1) {
                 curpage = (curpage == pageN - 1 ? curpage : curpage + 1);
@@ -50,10 +51,10 @@ var Scroll = function (ele) {
         return document.body.clientWidth || window.innerWidth;
     }
     function _setX(x) { // 设置x坐标
-        ele_dom.style.transform = 'translateX(' + x + 'px)';
-        ele_dom.style.webkitTransform = 'translateX(' + x + 'px)';
-        ele_dom.style.oTransform = 'translateX(' + x + 'px)';
-        ele_dom.style.mozTransform = 'translateX(' + x + 'px)';
+        ele_dom.style.transform = 'translate3d(' + x + 'px,0,0)';
+        ele_dom.style.webkitTransform = 'translate3d(' + x + 'px,0,0)';
+        ele_dom.style.oTransform = 'translate3d(' + x + 'px,0,0)';
+        ele_dom.style.mozTransform = 'translate3d(' + x + 'px,0,0)';
     }
     function _moveTo(index) {
         ele_dom.className += ' scroll-other'; // 设置时间
