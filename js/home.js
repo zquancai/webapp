@@ -94,3 +94,6 @@ var Scroll = function (ele) {
 
 var scroll = new Scroll('scroll');
 scroll.init();
+
+var img_scroll =new Scroll('img-scroll');
+img_scroll.init();

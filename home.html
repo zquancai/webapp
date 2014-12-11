@@ -8,15 +8,66 @@
 <body>
     <header>
         <div class="header-1">
-            <div class="menu-left"></div>
+            <label class="menu-left" for="left-btn"></label>
             <div class="menu-logo"></div>
+            <input id="left-btn" class="left-btn" type="checkbox"/>
+            <div class="menu-left_b">
+                左侧菜单体
+            </div>
         </div>
         <div class="header-2">
             <div class="user-img"></div>
-            <div class="menu-right"></div>
+            <label class="menu-right" for="right-btn"></label>
+            <input id="right-btn" class="right-btn" type="checkbox"/>
+            <ul class="more">
+                <li>18/13</li>
+                <li>离线</li>
+                <li>夜间</li>
+                <li>搜索</li>
+                <li>扫一扫</li>
+                <li>设置</li>
+            </ul>
         </div>
     </header>
-    <div class="container">
+    <section class="tab">
+        <div class="tab-b">
+            <div>科技</div>
+            <div>科技</div>
+            <div>科技</div>
+            <div>科技</div>
+            <div>科技</div>
+            <div>科技</div>
+            <div>科技</div>
+            <div>科技</div>
+            <div>科技</div>
+            <div>科技</div>
+            <div>科技</div>
+        </div>
+        <label class="pull-down-btn" for="pull-down"></label>
+        <input id="pull-down" class="pull-down" type="checkbox"/>
+        <div class="tab-title">标题</div>
+        <div class="tab-choice">
+            各种选择
+        </div>
+    </section>
+
+    <section class="container">
+        <div id="img-scroll" class="scroll">
+            <section>
+                <img src="images/1.jpg" />
+            </section>
+            <section>
+                <img src="images/2.jpg" />
+            </section>
+            <section>
+                <img src="images/3.jpg" />
+            </section>
+            <section>
+                <img src="images/4.jpg" />
+            </section>
+        </div>
+    </section>
+    <section class="container">
         <div id="scroll" class="scroll">
             <section>
                 <div>1</div>
@@ -35,7 +86,7 @@
                 <img src="images/4.jpg" />
             </section>
         </div>
-    </div>
+    </section>
     <script type="text/javascript" src="js/home.js?v=201412102047"></script>
 </body>
 </html>
