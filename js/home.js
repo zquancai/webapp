@@ -28,7 +28,7 @@ var Scroll = function (ele) {
         event.preventDefault(); // 阻止默认的触摸操作
         event.stopPropagation();
         curX = _getPageX(event);
-        _setX(curX - startX - curpage * dwidth);
+        _setX(curX - startX - curpage * cwidth);
     }
     function _touchend(event) {
         var move = curX - startX;
@@ -58,7 +58,7 @@ var Scroll = function (ele) {
     }
     function _moveTo(index) {
         ele_dom.className += ' scroll-other'; // 设置时间
-        _setX(-index * dwidth);
+        _setX(-index * cwidth);
     }
     this.init = function () { // 初始化
         var that = this;
@@ -70,6 +70,7 @@ var Scroll = function (ele) {
             return false;
         }
         dwidth = _getWidth();
+        cwidth = ele_dom.firstElementChild.offsetWidth; // 获取子元素的宽度
         pageN = ele_dom.childElementCount || ele_dom.children.length; // 滑块数量
         ele_dom.addEventListener('touchstart', that, false);
         ele_dom.addEventListener('touchmove', that, false);
@@ -89,11 +90,14 @@ var Scroll = function (ele) {
                 break;
         }
     };
-    
+
 };
 
 var scroll = new Scroll('scroll');
 scroll.init();
 
-var img_scroll =new Scroll('img-scroll');
+var img_scroll = new Scroll('img-scroll');
 img_scroll.init();
+
+var tab_b = new Scroll('tab-b');
+tab_b.init();

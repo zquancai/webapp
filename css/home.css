@@ -148,22 +148,32 @@ header {
 }
 
 .tab-title {
-    position: absolute;
+    /*position: absolute;*/
+    -webkit-box-flex: 1;
     left: 0;
     height: 38px;
     line-height: 38px;
     background: wheat;
     opacity: 1;
+    display: none;
+    transition:display 500ms cubic-bezier(0,0,0.25,1);
+    -moz-transition:display 500ms cubic-bezier(0,0,0.25,1); /* Firefox 4 */
+    -webkit-transition:display 500ms cubic-bezier(0,0,0.25,1); /* Safari and Chrome */
+    -o-transition:display 500ms cubic-bezier(0,0,0.25,1); /* Opera */
 }
 
 .pull-down-btn {
     display: block;
     width: 25px;
     height: 16px;
-    margin: 11px 10px 11px 10px;
+    padding: 11px 10px 11px 10px;
     background: url("../images/icon.png") no-repeat;
-    background-position: -70px -210px;
+    background-position: -60px -197px;
     background-size: 350px 350px;
+    background-clip: content-box;
+}
+
+.pull-down-btn:hover {
 }
 
 .tab-choice {
@@ -174,6 +184,11 @@ header {
     width: 100%;
     background: white;
     overflow: hidden;
+    transition:height 500ms cubic-bezier(0,0,0.25,1);
+    -moz-transition:height 500ms cubic-bezier(0,0,0.25,1); /* Firefox 4 */
+    -webkit-transition:height 500ms cubic-bezier(0,0,0.25,1); /* Safari and Chrome */
+    -o-transition:height 500ms cubic-bezier(0,0,0.25,1); /* Opera */
+    z-index: 1;
 }
 
 .pull-down:checked ~ .tab-choice {
@@ -184,28 +199,20 @@ header {
     -o-transition:height 500ms cubic-bezier(0,0,0.25,1); /* Opera */
 }
 
-.pull-down ~ .tab-title {
-    opacity:0;
-    transition:opacity 500ms cubic-bezier(0,0,0.25,1);
-    -moz-transition:opacity 500ms cubic-bezier(0,0,0.25,1); /* Firefox 4 */
-    -webkit-transition:opacity 500ms cubic-bezier(0,0,0.25,1); /* Safari and Chrome */
-    -o-transition:opacity 500ms cubic-bezier(0,0,0.25,1); /* Opera */
+.pull-down:checked ~ .pull-down-btn {
+    transform: rotate(180deg);
 }
 
 .pull-down:checked ~ .tab-title {
-    opacity:1;
-    transition:opacity 500ms cubic-bezier(0,0,0.25,1);
-    -moz-transition:opacity 500ms cubic-bezier(0,0,0.25,1); /* Firefox 4 */
-    -webkit-transition:opacity 500ms cubic-bezier(0,0,0.25,1); /* Safari and Chrome */
-    -o-transition:opacity 500ms cubic-bezier(0,0,0.25,1); /* Opera */
+    display: block;
+    transition:display 500ms cubic-bezier(0,0,0.25,1);
+    -moz-transition:display 500ms cubic-bezier(0,0,0.25,1); /* Firefox 4 */
+    -webkit-transition:display 500ms cubic-bezier(0,0,0.25,1); /* Safari and Chrome */
+    -o-transition:display 500ms cubic-bezier(0,0,0.25,1); /* Opera */
 }
 
-.pull-down ~ .tab-choice {
-    height:0;
-    transition:height 500ms cubic-bezier(0,0,0.25,1);
-    -moz-transition:height 500ms cubic-bezier(0,0,0.25,1); /* Firefox 4 */
-    -webkit-transition:height 500ms cubic-bezier(0,0,0.25,1); /* Safari and Chrome */
-    -o-transition:height 500ms cubic-bezier(0,0,0.25,1); /* Opera */
+.pull-down:checked ~ .tab-b {
+    display: none;
 }
 
 .container {
