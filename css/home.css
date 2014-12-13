@@ -48,6 +48,7 @@ header {
     height: 100%;
     width: 200px;
     background: white;
+    z-index: 1;
 }
 
 .left-btn:checked ~ .menu-left_b {
@@ -135,13 +136,24 @@ header {
 }
 
 .tab-b {
-    display: -webkit-box;
-    display: -moz-box;
     -webkit-box-flex: 1;
     overflow: hidden;
+    /*box-shadow: inset 10px 0 25px -10px black;*/
+    /*transition:box-shadow 1.5s cubic-bezier(0,0,0.25,1);*/
 }
 
-.tab-b>div {
+.tab-b1 {
+    display: -webkit-box;
+    display: -moz-box;
+    white-space: nowrap;
+    transition:-webkit-transform 0s cubic-bezier(0,0,0.25,1);
+    -moz-transition:-webkit-transform 0s cubic-bezier(0,0,0.25,1); /* Firefox 4 */
+    -webkit-transition:-webkit-transform 0s cubic-bezier(0,0,0.25,1); /* Safari and Chrome */
+    -o-transition:-webkit-transform 0s cubic-bezier(0,0,0.25,1); /* Opera */
+    text-align: center;
+}
+
+.tab-b1>div {
     padding: 10px 5px 8px 5px;
     margin: 0 5px;
     border-bottom: 2px solid #ea413d;
