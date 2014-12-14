@@ -127,7 +127,8 @@ var ScrollImg = function (ele, raw_classn) {
         curpage = 1, // 当前页面
         dir = 0, // 左右滑，-1左滑
         scroll_lr = false, // 左右滑动
-        moveready = false // 滑动开始
+        moveready = false, // 滑动开始
+        that = this
         ;
     function _getPageXY(event,type){
         var a = event.touches[0];
@@ -154,7 +155,7 @@ var ScrollImg = function (ele, raw_classn) {
             if(Math.abs(curX - startX) > 5){
                 event.preventDefault();
                 event.stopPropagation();
-                moveready = true;
+                moveready = true; // 开始滑动
             }
             else if (Math.abs(curY - startY) > 5)
                 scroll_lr = false;
@@ -190,6 +191,10 @@ var ScrollImg = function (ele, raw_classn) {
         else{
             _moveTo(curpage);
         }
+    }
+    function _click(event) {
+        event.preventDefault();
+        event.stopPropagation();
     }
     function _getWidth() { // 获取设备宽度
         return document.body.clientWidth || window.innerWidth;
@@ -232,6 +237,10 @@ var ScrollImg = function (ele, raw_classn) {
                 break;
             case 'touchend':
                 _touchend(event);
+                break;
+            case 'click':
+                console.log('ccc');
+                _click(event);
                 break;
         }
     };
@@ -302,9 +311,6 @@ var Tab = function (ele) {
         event.preventDefault();
         event.stopPropagation();
     }
-    function _getWidth() { // 获取设备宽度
-        return document.body.clientWidth || window.innerWidth;
-    }
     function _setX(x) { // 设置x坐标
         ele_dom.style.transform = 'translate3d(' + x + 'px,0,0)';
         ele_dom.style.webkitTransform = 'translate3d(' + x + 'px,0,0)';
@@ -346,8 +352,6 @@ var Tab = function (ele) {
                 _touchend(event);
                 break;
             case 'click':
-                event.preventDefault();
-                event.stopPropagation();
                 _click(event);
                 break;
         }
