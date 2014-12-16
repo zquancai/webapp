@@ -52,7 +52,7 @@ var Scroll = function (ele, raw_classn) {
         }
     }
     function _touchend(event) {
-        if (!scroll_lr)
+        if (!scroll_lr || !moveready)
             return;
         var move = curX - startX;
         if(Math.abs(move) >= 100) {
@@ -162,7 +162,7 @@ var ScrollImg = function (ele, raw_classn) {
         }
     }
     function _touchend(event) {
-        if (!scroll_lr)
+        if (!scroll_lr || !moveready)
             return;
         var move = curX - startX;
         if(Math.abs(move) >= 100) {
@@ -227,7 +227,7 @@ var ScrollImg = function (ele, raw_classn) {
         ele_dom.addEventListener('touchend', that, false);
     };
     this.handleEvent = function (event) { // 隐式调用响应事件
-        //console.log(event.type);
+        console.log(event.type);
         switch(event.type){
             case 'touchstart':
                 _touchstart(event);
@@ -237,10 +237,6 @@ var ScrollImg = function (ele, raw_classn) {
                 break;
             case 'touchend':
                 _touchend(event);
-                break;
-            case 'click':
-                console.log('ccc');
-                _click(event);
                 break;
         }
     };
@@ -271,9 +267,11 @@ var Tab = function (ele) {
         ele_dom.className = 'tab-b1';
         startX = _getPageXY(event,'pageX');
         tempX = 0;
+        moveready = false;
     }
     function _touchmove(event) {
         event.preventDefault();
+        moveready = true;
         curX = _getPageXY(event,'pageX');
         tempX = thatX + curX - startX;
         var tempdis = Math.abs(curX - startX);
@@ -289,15 +287,15 @@ var Tab = function (ele) {
             _setX(tempX);
     }
     function _touchend(event) {
+        if(!moveready)
+            return;
         if(tempX >= 0){
-            //ele_dom.className += ' scroll-other'; // 设置时间
             _setX(0);
             ele_par.style.boxShadow = '';
             ele_par.style.transition = 'box-shadow 3s cubic-bezier(0,0,0.25,1)';
             thatX = 0;
         }
         else if(tempX <= -mdis){
-            //ele_dom.className += ' scroll-other'; // 设置时间
             _setX(-mdis);
             ele_par.style.boxShadow = '';
             ele_par.style.transition = 'box-shadow 3s cubic-bezier(0,0,0.25,1)';
@@ -337,7 +335,6 @@ var Tab = function (ele) {
         ele_dom.addEventListener('touchstart', that, false);
         ele_dom.addEventListener('touchmove', that, false);
         ele_dom.addEventListener('touchend', that, false);
-        ele_dom.addEventListener('click', that, true);
     };
     this.handleEvent = function (event) { // 隐式调用响应事件
         //console.log(event.type);
@@ -350,9 +347,6 @@ var Tab = function (ele) {
                 break;
             case 'touchend':
                 _touchend(event);
-                break;
-            case 'click':
-                _click(event);
                 break;
         }
     };
